@@ -129,7 +129,7 @@ public class BaseTest {
         else {
             logger.info("************************************   Testiniumda test ayağa kalkacak   ************************************");
             ChromeOptions options = new ChromeOptions();
-            capabilities .setBrowserName(browserChrome);
+            capabilities.setBrowserName(browserChrome);
 
             options.addArguments("disable-translate");
 
@@ -163,11 +163,10 @@ public class BaseTest {
         driver.get(baseUrl);
 
     }
+    
     @AfterScenario
-
     public void tearDown() {
         driver.quit();
-
     }
 
 }
