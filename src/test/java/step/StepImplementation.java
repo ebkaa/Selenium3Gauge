@@ -56,9 +56,9 @@ public class StepImplementation extends BaseTest {
                 waitByMilliSeconds(500);
                 clickElement(element);
             }
-
             catch(Exception e){
-
+                 logger.info("Element click error: {}", e.getMessage());
+                throw new NoSuchElementException();
             }
         }
     }
