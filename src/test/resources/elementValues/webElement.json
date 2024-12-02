@@ -21,8 +21,8 @@
   },
   {
     "key": "elektronik",
-    "value": "(//div/ul/li/span[@class='sf-MenuItems-5_2RN'])[1]",
-    "type": "xpath"
+    "value": "ul[class='sf-MenuItems-MXhuaBP08HFYcFicDzFl']>li:nth-of-type(1)",
+    "type": "css"
   },
   {
     "key": "sepet_icon",
