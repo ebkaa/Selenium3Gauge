@@ -142,10 +142,14 @@ public class BaseTest {
                 capabilities.setBrowserName("firefox");
 
                 FirefoxOptions options = new FirefoxOptions();
-                options.addArguments("--start-maximizebru");
+                options.addArguments("--start-maximized");
                 options.addArguments("--disable-notifications");
 
                 capabilities.setCapability(FirefoxOptions.FIREFOX_OPTIONS, options);
+
+                capabilities.setCapability("key", System.getenv("key"));
+                driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hu"), capabilities);
+                
             } else {
                 logger.info("Chrome tarayıcısı başlatılıyor...");
                 capabilities = new DesiredCapabilities();
@@ -160,11 +164,14 @@ public class BaseTest {
                 options.setExperimentalOption("prefs", prefs);
 
                 capabilities.setCapability(ChromeOptions.CAPABILITY, options);
+
+                capabilities.setCapability("key", System.getenv("key"));
+                driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capabilities);
             }
 
-            capabilities.setCapability("key", System.getenv("key"));
+            //capabilities.setCapability("key", System.getenv("key"));
 
-            driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capabilities);
+            //driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capabilities);
         }
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
