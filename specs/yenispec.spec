@@ -46,3 +46,10 @@ Tags: Silgi_
 * Ebubekir yazdi bunu
 
 
+ ElementNotFoundExceptionCase
+-------------
+
+Tags: ElementNotFoundExceptionCase_
+* Click to element "elektronik"
+
+
