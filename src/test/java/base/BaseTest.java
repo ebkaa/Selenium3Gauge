@@ -142,7 +142,7 @@ public class BaseTest {
                 capabilities.setBrowserName("firefox");
 
                 FirefoxOptions options = new FirefoxOptions();
-                options.addArguments("--start-maximized");
+                options.addArguments("--start-maximizebru");
                 options.addArguments("--disable-notifications");
 
                 capabilities.setCapability(FirefoxOptions.FIREFOX_OPTIONS, options);
