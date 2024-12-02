@@ -18,6 +18,7 @@ import org.slf4j.LoggerFactory;
 import org.slf4j.impl.Log4jLoggerAdapter;
 
 import java.util.concurrent.TimeUnit;
+import java.util.NoSuchElementException;
 
 import static org.junit.Assert.assertTrue;
 
