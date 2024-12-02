@@ -128,31 +128,43 @@ public class BaseTest {
 
         else {
             logger.info("************************************   Testiniumda test ayağa kalkacak   ************************************");
-            ChromeOptions options = new ChromeOptions();
-            capabilities.setBrowserName(browserChrome);
+            String browser = System.getenv("browser");
+            if (browser == null || browser.isEmpty()) {
+                browser = "chrome";
+            }
 
-            options.addArguments("disable-translate");
+            logger.info(browser);
 
-            options.addArguments("--disable-notifications");
+            DesiredCapabilities capabilities;
+            if ("firefox".equalsIgnoreCase(browser)) {
+                logger.info("Firefox tarayıcısı başlatılıyor...");
+                capabilities = new DesiredCapabilities();
+                capabilities.setBrowserName("firefox");
 
-            options.addArguments("--start-fullscreen");
+                FirefoxOptions options = new FirefoxOptions();
+                options.addArguments("--start-maximized");
+                options.addArguments("--disable-notifications");
 
-            Map<String, Object> prefs = new HashMap<>();
+                capabilities.setCapability(FirefoxOptions.FIREFOX_OPTIONS, options);
+            } else {
+                logger.info("Chrome tarayıcısı başlatılıyor...");
+                capabilities = new DesiredCapabilities();
+                capabilities.setBrowserName("chrome");
 
-            options.setExperimentalOption("prefs", prefs);
+                ChromeOptions options = new ChromeOptions();
+                options.addArguments("disable-translate");
+                options.addArguments("--disable-notifications");
+                options.addArguments("--start-fullscreen");
 
-            capabilities.setCapability(ChromeOptions.CAPABILITY, options);
+                Map<String, Object> prefs = new HashMap<>();
+                options.setExperimentalOption("prefs", prefs);
 
-            //capabilities.setCapability("key", "testinium:0f8553472fedc6291c66ca8c58572509");
+                capabilities.setCapability(ChromeOptions.CAPABILITY, options);
+            }
+
             capabilities.setCapability("key", System.getenv("key"));
 
-            browserChrome = System.getenv("browser");
-
-           // driver = new RemoteWebDriver(new URL("https://hubclouddev.testinium.com/wd/hub"), capabilities);
             driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capabilities);
-           // driver = new RemoteWebDriver(new URL("http://172.25.1.25:4444/wd/hub"), capabilities);
-           //driver = new RemoteWebDriver(new URL("http://host.docker.internal:4444/wd/hub"), capabilities);
-
         }
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
