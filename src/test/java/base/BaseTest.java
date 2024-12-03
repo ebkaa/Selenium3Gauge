@@ -166,7 +166,7 @@ public class BaseTest {
                 capabilities.setCapability(ChromeOptions.CAPABILITY, options);
 
                 capabilities.setCapability("key", System.getenv("key"));
-                driver = new RemoteWebDriver(new URL("http://host.docker.internal:4444/wd/hub"), capabilities);
+                driver = new RemoteWebDriver(new URL("http://host.docker.internal:4444/wd/hu"), capabilities);
             }
 
             //capabilities.setCapability("key", System.getenv("key"));
