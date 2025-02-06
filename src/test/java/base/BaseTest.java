@@ -47,7 +47,7 @@ public class BaseTest {
         String selectBrowser = "chrome";
 
         logger.info("************************************  BeforeScenario  ************************************");
-        logger.info("************************************key   " + System.getProperty("key") + "   key************************************");
+        logger.info("************************************key   " + System.getenv("key") + "   key************************************");
 
         if (StringUtils.isEmpty(System.getenv("key"))){
             logger.info("Local cihazda " + selectPlatform + " ortamında " + browserChrome + " browserında test ayağa kalkacak");
